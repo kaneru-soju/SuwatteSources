@@ -10,11 +10,11 @@ export const parseChapters = (json: string): Chapter[] => {
   }
 
   const chapters: Chapter[] = chaptersApiResponse.post.chapters.map(
-    (chapter) => {
+    (chapter, index) => {
       return {
         chapterId: `${chapter.id}`,
         date: new Date(chapter.createdAt),
-        index: chaptersApiResponse.totalChapterCount - chapter.number,
+        index,
         language: 'en_US',
         number: chapter.number,
         webUrl: `https://hivetoons.org/series/${chapter.mangaPost.slug}/${chapter.slug}`,

@@ -18,15 +18,19 @@ export const parseSearchRequest = (request: DirectoryRequest<FilterResult>) => {
 
   if (request.filters.genre) {
     const filter = request.filters.genre;
-    if (filter.included)
-      params['g_i'] = filter.included.map((v) => `_${v}`).join('');
-    if (filter.excluded)
-      params['g_e'] = filter.excluded.map((v) => `_${v}`).join('');
+    if (filter.included) {
+      params.genreIds = filter.included.join(',');
+    }
+    // if (filter.excluded) {
+    //   params['g_e'] = filter.excluded.map((v) => `_${v}`).join('');
+    // }
   }
 
   if (request.filters.status) {
     const key = request.filters.status;
-    if (key !== 'all') params.sts = key;
+    if (key !== 'all') {
+      params.seriesStatus = key;
+    }
   }
 
   return params;

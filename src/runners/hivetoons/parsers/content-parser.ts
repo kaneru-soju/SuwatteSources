@@ -1,4 +1,9 @@
-import { Content, PublicationStatus, ReadingMode } from '@suwatte/daisuke';
+import {
+  Chapter,
+  Content,
+  PublicationStatus,
+  ReadingMode,
+} from '@suwatte/daisuke';
 import { PostQueryResponse } from '../types';
 
 export const parseContent = (json: string): Content => {
@@ -8,7 +13,16 @@ export const parseContent = (json: string): Content => {
   }
 
   return {
-    chapters: [],
+    chapters: apiResponse.post.chapters.map((chapter, index) => {
+      return {
+        chapterId: `${chapter.id}`,
+        date: new Date(chapter.createdAt),
+        index,
+        language: 'en_US',
+        number: chapter.number,
+        webUrl: `https://hivetoons.org/series/${chapter.mangaPost.slug}/${chapter.slug}`,
+      } as Chapter;
+    }),
     cover: apiResponse.post.featuredImage,
     creators: [apiResponse.post.artist, apiResponse.post.author].filter(
       Boolean

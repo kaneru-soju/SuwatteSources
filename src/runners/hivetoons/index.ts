@@ -65,7 +65,7 @@ export class Target
       sort: {
         options: SORT_OPTONS,
         default: {
-          id: 'popular',
+          id: 'totalViews',
           ascending: false,
         },
         canChangeOrder: false,
