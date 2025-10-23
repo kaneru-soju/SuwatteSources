@@ -215,7 +215,7 @@ class Target {
         name: 'Hive Toon',
         version: 0.1,
         website: 'https://hivetoons.org',
-        thumbnail: 'void_scans.png',
+        thumbnail: '../../assets/void_scans.png',
         supportedLanguages: ['en_US'],
         rating: daisuke_1.CatalogRating.SAFE,
     };
@@ -288,7 +288,7 @@ const parseChapters = (json) => {
         return {
             chapterId: `${chapter.id}`,
             date: new Date(chapter.createdAt),
-            index: chaptersApiResponse.totalChapterCount - chapter.number,
+            index: chapter.number - 1,
             language: 'en_US',
             number: chapter.number,
             webUrl: `https://hivetoons.org/series/${chapter.mangaPost.slug}/${chapter.slug}`,
@@ -324,7 +324,7 @@ const parseContent = (json) => {
             return {
                 chapterId: `${chapter.id}`,
                 date: new Date(chapter.createdAt),
-                index: apiResponse.totalChapterCount - chapter.number,
+                index: chapter.number - 1,
                 language: 'en_US',
                 number: chapter.number,
                 webUrl: `https://hivetoons.org/series/${chapter.mangaPost.slug}/${chapter.slug}`,
