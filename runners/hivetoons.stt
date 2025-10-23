@@ -215,7 +215,7 @@ class Target {
         name: 'Hive Toon',
         version: 0.1,
         website: 'https://hivetoons.org',
-        thumbnail: '../../assets/void_scans.png',
+        thumbnail: 'void_scans.png',
         supportedLanguages: ['en_US'],
         rating: daisuke_1.CatalogRating.SAFE,
     };
