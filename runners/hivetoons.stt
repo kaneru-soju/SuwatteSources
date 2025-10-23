@@ -284,11 +284,11 @@ const parseChapters = (json) => {
     if (!chaptersApiResponse) {
         return [];
     }
-    const chapters = chaptersApiResponse.post.chapters.map((chapter) => {
+    const chapters = chaptersApiResponse.post.chapters.map((chapter, index) => {
         return {
             chapterId: `${chapter.id}`,
             date: new Date(chapter.createdAt),
-            index: chapter.number - 1,
+            index,
             language: 'en_US',
             number: chapter.number,
             webUrl: `https://hivetoons.org/series/${chapter.mangaPost.slug}/${chapter.slug}`,
@@ -320,11 +320,11 @@ const parseContent = (json) => {
         throw new Error('Parsing Error\nFailed to parse API response');
     }
     return {
-        chapters: apiResponse.post.chapters.map((chapter) => {
+        chapters: apiResponse.post.chapters.map((chapter, index) => {
             return {
                 chapterId: `${chapter.id}`,
                 date: new Date(chapter.createdAt),
-                index: chapter.number - 1,
+                index,
                 language: 'en_US',
                 number: chapter.number,
                 webUrl: `https://hivetoons.org/series/${chapter.mangaPost.slug}/${chapter.slug}`,
